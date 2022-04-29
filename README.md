@@ -17,6 +17,8 @@ A mod for [BloonsTD6](https://store.steampowered.com/app/960090/Bloons_TD_6/) th
   * Adds the option to play co-op games with less people than required (aka single player).
   * Allows for hidden maps such as Blons to be selected normally through challenge editor.
   * Gives the option to shuffle the in-game jukebox.
+
+* ### Settings
   * Extra in-game settings have been added that allow you to enable and disable parts of the mod.
 
 * ### Other mod support
