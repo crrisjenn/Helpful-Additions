@@ -1,7 +1,7 @@
 /***
  * This file may be copied without needing to disclose the source it was copied to.
  *
- * This source file is under the Helpful Additions project.
+ * This file is under the Helpful Additions project.
  * Helpful Additions is licensed under the GNU General Public License Version 3.
  ***/
 
