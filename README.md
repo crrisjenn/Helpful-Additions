@@ -3,7 +3,7 @@ A mod for [BloonsTD6](https://store.steampowered.com/app/960090/Bloons_TD_6/) th
 
 ---
 
-## Features
+# Features
 
 * ### In Any Game
   * Adds a round info screen that allows you to view what is to come on any round.
@@ -28,6 +28,4 @@ A mod for [BloonsTD6](https://store.steampowered.com/app/960090/Bloons_TD_6/) th
 # LICENSING & CREDITS:
 Helpful Additions is licensed under the GNU General Public License Version 3. See [LICENSE](https://github.com/Baydock/Helpful-Additions/blob/main/LICENSE) for the full License.
 
-Mods for BloonsTD6 use MelonLoader to load into the game:
-* [Site](https://melonwiki.xyz)
-* [Github](https://github.com/LavaGang/MelonLoader)
+Mods for BloonsTD6 use [MelonLoader](https://github.com/LavaGang/MelonLoader) to load into the game: [Wiki](https://melonwiki.xyz)
