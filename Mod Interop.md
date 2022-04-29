@@ -9,7 +9,5 @@ This function allows other modders to add custom bloon graphics, such that they 
 
 ## How to set it up
 
-In order to interface with Helpful Additions without adding it as a dependency, C# Reflection is required.
-
-The following code is an example of how to set up all available functions for use in your own mod.
-Feel free to copy and edit it such that it fits your mod and coding style.
+In order to interface with Helpful Additions without adding it as a dependency add the following file to your project.
+[Helpful Additions Mod Interop](https://github.com/Baydock/Helpful-Additions/blob/main/ModInterop/HelpfulAdditions.cs)
