@@ -9,5 +9,5 @@ This function allows other modders to add custom bloon graphics, such that they 
 
 ## How to set it up
 
-In order to interface with Helpful Additions without adding it as a dependency add the following file to your project.
-[Helpful Additions Mod Interop](https://github.com/Baydock/Helpful-Additions/blob/main/ModInterop/HelpfulAdditions.cs)
+In order to interface with Helpful Additions without adding it as a dependency add the following file to your project:\
+[HelpfulAdditions.cs](https://github.com/Baydock/Helpful-Additions/blob/main/ModInterop/HelpfulAdditions.cs)
