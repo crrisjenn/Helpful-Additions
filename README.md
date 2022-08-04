@@ -35,7 +35,7 @@ A mod for [BloonsTD6](https://store.steampowered.com/app/960090/Bloons_TD_6/) th
 4. Unistall, then reinstall the game
 5. Extract the zip file into the base BloonsTD6 folder
 
-   5.a. It should be title "BloonsTD6" and have the file "BloonsTD6.exe"
+   5.a. The folder should be title "BloonsTD6" and have the file "BloonsTD6.exe"
 6. Run the game
 
 ---
