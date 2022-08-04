@@ -104,7 +104,7 @@ namespace HelpfulAdditions {
 
                 // don't want monkey money showing
                 CommonForegroundScreen.instance.Hide();
-                CommonForegroundScreen.instance.Show(true, "", false, false, false, false, false);
+                CommonForegroundScreen.instance.Show(true, "", false, false, false, false, false, false);
 
                 __instance.menuTitleTxt.text = "Round Info";
 

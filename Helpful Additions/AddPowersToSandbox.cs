@@ -8,7 +8,7 @@ using HelpfulAdditions.Properties;
 namespace HelpfulAdditions {
     [HarmonyPatch]
     internal static class AddPowersToSandbox {
-        private static bool IsSandboxAndPowersOn() => (InGame.instance?.IsSandbox ?? false) && Settings.PowersInSandboxOn;
+        private static bool IsSandboxAndPowersOn() => (InGame.instance?.bridge?.IsSandboxMode() ?? false) && Settings.PowersInSandboxOn;
 
         [HarmonyPatch(typeof(RightMenu), nameof(RightMenu.SetPowersInteractable))]
         [HarmonyPrefix]
@@ -56,49 +56,28 @@ namespace HelpfulAdditions {
             }
         }
 
+        [HarmonyPatch(typeof(PowersMenu), nameof(PowersMenu.Initialise))]
+        [HarmonyPrefix]
+        public static void InitialiseSandboxPowersMenuPrefix(ref PowersMenu __instance) {
+            if (IsSandboxAndPowersOn()) {
+                __instance.instasDisabled = true;
+                __instance.dontUsePlayerInventory = true;
+            }
+        }
+
+        [HarmonyPatch(typeof(ReadonlyInGameData), nameof(ReadonlyInGameData.ArePowersAllowed))]
+        [HarmonyPostfix]
+        public static void AllowPowersInSandbox(ref bool __result) {
+            if (IsSandboxAndPowersOn())
+                __result = true;
+        }
+
         private static bool powerIsBeingUsed = false;
         [HarmonyPatch(typeof(PowersMenu), nameof(PowersMenu.StartPowerPlacement))]
         [HarmonyPostfix]
         public static void WhenPowerIsBeingUsed() {
             if (IsSandboxAndPowersOn())
                 powerIsBeingUsed = true;
-        }
-
-        [HarmonyPatch(typeof(InstaTowerGroupMenu), nameof(InstaTowerGroupMenu.Initialise))]
-        [HarmonyPostfix]
-        public static void RemoveInstaPowers(ref InstaTowerGroupMenu __instance) {
-            if (IsSandboxAndPowersOn())
-                __instance.gameObject.SetActive(false);
-        }
-
-        [HarmonyPatch(typeof(PowersMenu), nameof(PowersMenu.LoadPowers))]
-        [HarmonyPostfix]
-        public static void EnablePowers(ref PowersMenu __instance) {
-            if (IsSandboxAndPowersOn()) {
-                __instance.getMorePowersLarge.interactable = true;
-                InGame.Bridge.Model.powersEnabled = true;
-            }
-        }
-
-        [HarmonyPatch(typeof(PowersMenu), nameof(PowersMenu.UpdateShowInstaMonkeysButton))]
-        [HarmonyPostfix]
-        public static void RemoveShowInstaMonkeysButton(ref PowersMenu __instance) {
-            if (IsSandboxAndPowersOn())
-                __instance.showInstaMonkeysButton.SetActive(false);
-        }
-
-        [HarmonyPatch(typeof(PowerButton), nameof(PowerButton.ModeDisabled))]
-        [HarmonyPostfix]
-        public static void MakePowersModeEnabled(ref bool __result) {
-            if (IsSandboxAndPowersOn())
-                __result = false;
-        }
-
-        [HarmonyPatch(typeof(PowerButton), nameof(PowerButton.RoundDisabled))]
-        [HarmonyPostfix]
-        public static void MakePowersRoundEnabled(ref bool __result) {
-            if (IsSandboxAndPowersOn())
-                __result = false;
         }
 
         [HarmonyPatch(typeof(StandardPowerButton), nameof(StandardPowerButton.UpdatePowerDisplay))]

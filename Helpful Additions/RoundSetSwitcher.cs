@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Unity.UI_New;
+﻿using Assets.Scripts.Models.Rounds;
+using Assets.Scripts.Unity.UI_New;
 using Assets.Scripts.Unity.UI_New.InGame;
 using Assets.Scripts.Unity.UI_New.Popups;
 using Assets.Scripts.Unity.UI_New.Utils;
@@ -23,7 +24,7 @@ namespace HelpfulAdditions {
         private static readonly int SwitcherCodeLength = SwitcherCode.Length;
         private static readonly List<DebugValueScreen> switcherPopups = new();
 
-        private static bool RoundSetSwitcherEnabled() => Settings.RoundSetSwitcherOn && (InGame.instance?.IsSandbox ?? false);
+        private static bool RoundSetSwitcherEnabled() => Settings.RoundSetSwitcherOn && (InGame.instance?.bridge?.IsSandboxMode() ?? false);
 
         [HarmonyPatch(typeof(MainHudRightAlign), nameof(MainHudRightAlign.Initialise))]
         [HarmonyPostfix]
@@ -127,8 +128,8 @@ namespace HelpfulAdditions {
                 TMP_Dropdown dropdown = inputObject.AddComponent<TMP_Dropdown>();
                 dropdown.name = SwitcherCode;
                 List<string> names = new();
-                foreach (string name in InGame.Bridge.Model.roundSetsByName.Keys) {
-                    string displayName = LocalizationManager.Instance.GetText(name);
+                foreach (RoundSetModel roundSet in InGame.Bridge.Model.roundSets) {
+                    string displayName = LocalizationManager.Instance.GetText(roundSet.name);
                     displayName = Regex.Replace(displayName, "roundset", "", RegexOptions.IgnoreCase);
                     names.Add(displayName);
                     dropdown.options.Add(new TMP_Dropdown.OptionData(displayName));
@@ -234,7 +235,7 @@ namespace HelpfulAdditions {
             if (RoundSetSwitcherEnabled()) {
                 TMP_Dropdown dropdown = __instance.GetComponentInChildren<TMP_Dropdown>();
                 if (dropdown is not null) {
-                    okCallback?.Invoke(InGame.Bridge.Model.roundSetsByName.entries[dropdown.value].key);
+                    okCallback?.Invoke(InGame.Bridge.Model.roundSets[dropdown.value].name);
                     return false;
                 }
             }
