@@ -27,6 +27,17 @@ A mod for [BloonsTD6](https://store.steampowered.com/app/960090/Bloons_TD_6/) th
  
 ---
 
+# How to install .NET 6 MelonLoader
+
+1. Go to the base BloonsTD6 folder. The folder should be title "BloonsTD6" and have the file "BloonsTD6.exe"
+1. Go to https://nightly.link/SamboyCoding/MelonLoader/actions/runs/2754114785
+2. Download the option titled MelonLoader.x64.CI.Release here
+3. Delete the folder titled "MelonLoader"
+4. Extract the zip file here, accepting any files it tries to replace
+5. Run the game
+
+---
+
 # LICENSING & CREDITS:
 Helpful Additions is licensed under the GNU General Public License Version 3. See [LICENSE](https://github.com/Baydock/Helpful-Additions/blob/main/LICENSE) for the full License.
 
