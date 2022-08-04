@@ -6,7 +6,7 @@ namespace HelpfulAdditions.Properties {
 
         private static void SetValueAndSave<T>(MelonPreferences_Entry<T> entry, T value) {
             entry.Value = value;
-            Category.SaveToFile(true);
+            Category.SaveToFile(false);
         }
 
         private static MelonPreferences_Entry<bool> PowersInSandboxOnEntry { get; } = Category.CreateEntry(nameof(PowersInSandboxOn), true);
